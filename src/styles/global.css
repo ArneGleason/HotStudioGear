@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Space+Grotesk:wght@400;700&family=Work+Sans:wght@400;500;600&display=swap');
+
+:root {
+  /* THEME: The Analog Antiquarian */
+
+  /* Primary Palette */
+  --color-primary: #ffdca1;
+  --color-primary-container: #ffb800;
+  
+  /* Secondary (Gary's Details) */
+  --color-secondary: #ffb0ca;
+  --color-secondary-container: #ff479c;
+  
+  /* Tertiary (Parchment) */
+  --color-tertiary: #e2e2ca;
+  --color-tertiary-container: #c6c6af;
+
+  /* Surfaces & Background */
+  --color-background: #181210;
+  --color-surface-dim: #181210;
+  --color-surface-container-lowest: #130d0b;
+  --color-surface-container-low: #201a18;
+  --color-surface-container: #251e1c;
+  --color-surface-container-high: #2f2826;
+  --color-surface-container-highest: #3b3331;
+  --color-surface-variant: #3b3331;
+  --color-surface-bright: #3f3835;
+
+  /* Text & Icons */
+  --color-on-background: #ede0dc;
+  --color-on-surface: #ede0dc;
+  --color-on-primary: #412d00;
+  --color-on-secondary: #640036;
+  
+  /* Outline & Borders */
+  --color-outline: #9e8f78;
+  --color-outline-variant: #514532;
+
+  /* Typography */
+  --font-display: 'Noto Serif', serif;
+  --font-headline: 'Noto Serif', serif;
+  --font-body: 'Work Sans', sans-serif;
+  --font-label: 'Space Grotesk', monospace;
+}
+
+/* Base Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headline);
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 3rem;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+}
+
+h2 {
+  font-size: 2.25rem;
+  color: var(--color-primary);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Layout constraints: The No-Line Rule */
+/* Instead of simple lines, we use background shifts */
+.surface-panel {
+  background-color: var(--color-surface-container);
+  padding: 2rem;
+  border-radius: 4px;
+  /* Elevation via Inward Shadow */
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.surface-lowest {
+  background-color: var(--color-surface-container-lowest);
+}
+
+.surface-variant {
+  background-color: var(--color-surface-variant);
+}
+
+/* Mechanical Text Inputs */
+input[type="text"], input[type="search"] {
+  background-color: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-outline-variant); 
+  /* Ghost border: 20% opacity look achieved by using a darker outline color */
+  color: var(--color-primary); /* Amber text for digital display feel */
+  font-family: var(--font-label);
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 5px rgba(0,0,0, 0.5);
+  font-size: 1rem;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--color-primary-container);
+}
+
+/* Primary Button */
+.btn-primary {
+  background: linear-gradient(165deg, var(--color-primary), var(--color-primary-container));
+  color: var(--color-on-primary);
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    0 4px 6px rgba(0,0,0,0.3);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  box-shadow: 
+    inset 0 2px 4px rgba(255,255,255,0.5),
+    0 6px 8px rgba(0,0,0,0.4);
+}
+
+/* Gary's Secondary Button */
+.btn-secondary {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary);
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+/* The Parchment System */
+.card-parchment {
+  background-color: var(--color-tertiary);
+  color: var(--color-surface-container-lowest);
+  padding: 1.5rem;
+  border: none;
+  position: relative;
+}
+
+/* Bezels */
+.bezel {
+  padding: 0.25rem;
+  background-color: var(--color-surface-container-highest);
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* Glass Float Rule */
+.glass-modal {
+  background-color: rgba(63, 56, 53, 0.4); /* surface-bright with 40% opacity */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6); /* Ambient shadows */
+}
+
+/* Container limits */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
