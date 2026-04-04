@@ -123,7 +123,7 @@ const base = import.meta.env.BASE_URL;
 						
 						<h4 style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--color-surface-container-lowest); font-family: var(--font-display);">{item.data.title}</h4>
 						
-						{item.data.image && <img src={`${base}${item.data.image.replace(/^\\//, '')}`} alt={item.data.title} style="width: 100%; object-fit: cover; border-radius: 4px; margin-bottom: 1rem; border: 2px solid var(--color-outline-variant);" />}
+						{item.data.image && <img src={`${base}${item.data.image.startsWith('/') ? item.data.image.slice(1) : item.data.image}`} alt={item.data.title} style="width: 100%; object-fit: cover; border-radius: 4px; margin-bottom: 1rem; border: 2px solid var(--color-outline-variant);" />}
 
 						<p style="color: var(--color-secondary-fixed-variant); font-weight: bold; margin-bottom: 1rem; border-bottom: 2px solid rgba(0,0,0,0.1); padding-bottom: 0.5rem;">
 							Condition: {item.data.condition} <br/>
@@ -146,7 +146,7 @@ const base = import.meta.env.BASE_URL;
 				
 				{allBlog.map(post => (
 					<div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-outline-variant);">
-						{post.data.image && <img src={`${base}${post.data.image.replace(/^\\//, '')}`} alt={post.data.title} style="width: 100%; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem;" />}
+						{post.data.image && <img src={`${base}${post.data.image.startsWith('/') ? post.data.image.slice(1) : post.data.image}`} alt={post.data.title} style="width: 100%; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem;" />}
 						<h4 style="color: var(--color-primary); margin-bottom: 0.25rem;">{post.data.title}</h4>
 						<p style="font-size: 0.85rem; color: var(--color-tertiary-container); margin-bottom: 0.75rem; font-family: var(--font-label);">By {post.data.author}</p>
 						
