@@ -69,13 +69,7 @@ Let me reveal the secrets of a "glorious lifestyle" for only <strong>$10,000</st
 </p>
 </div>
 
-<div class="gary-speech-bubble-md" style="background: var(--color-tertiary); color: var(--color-surface-container-lowest); padding: 1.5rem 2rem; border-radius: 80px; font-family: var(--font-headline); font-weight: bold; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.5); z-index: 10; position: absolute; right: 2rem; top: 3rem; transform: rotate(-2deg); line-height: 1.3;">
-<div style="position: absolute; top: -15px; right: 20px; width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-bottom: 20px solid var(--color-tertiary); transform: rotate(45deg);"></div>
-<em style="font-style: italic;">Ciao! I can change your life!</em><br/>
-Contact me now and we'll unleash<br/>
-your full... what's the word...<br/>
-<div style="color: #b41340; font-size: 2.2rem; text-transform: uppercase; text-align: center; margin-top: 0.5rem; letter-spacing: 0.05em;">Vigor!</div>
-</div>
+
 
 <div style="position: absolute; bottom: 2rem; right: 2rem; background: radial-gradient(circle, #ffb800 0%, #7c5800 100%); color: #000; padding: 1.5rem; border-radius: 50%; width: 140px; height: 140px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: var(--font-label); font-weight: bold; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.8); border: 2px dashed #000; z-index: 10; transform: rotate(-15deg);">
 LIMITED<br/>SPOTS<br/>LEFT!
