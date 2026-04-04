@@ -52,6 +52,44 @@ No. That was failure.
 
 ![Gary working on patchbay](/HotStudioGear/images/patchbay.png)
 
+<section style="background-image: url('/HotStudioGear/images/gary-banner.png'); background-size: cover; background-position: center top; border: 4px solid var(--color-outline-variant); margin-top: 3rem; margin-bottom: 3rem; padding: 3rem; position: relative; border-radius: 4px; box-shadow: inset 0 0 100px rgba(0,0,0,0.8); min-height: 450px; overflow: hidden;">
+	<div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%); border-radius: 4px; z-index: 0;"></div>
+	
+	<div class="gary-banner-content-md" style="position: relative; z-index: 5;">
+		<h2 style="font-size: 3.5rem; text-transform: uppercase; color: var(--color-primary-container); text-shadow: 2px 2px 8px rgba(0,0,0,0.9); margin-bottom: 0.5rem; line-height: 1; border: none; padding: 0;">Turn Your Life Around!</h2>
+		<p style="font-size: 1.5rem; color: #ffffff; text-shadow: 1px 1px 4px rgba(0,0,0,0.9); margin-bottom: 1.5rem; font-family: var(--font-headline);">
+			Let me reveal the secrets of a "glorious lifestyle" for only <strong>$10,000</strong> and a <em style="font-style: italic;">plane ticket to Rome!</em>
+		</p>
+		
+		<button style="background: linear-gradient(180deg, #b41340, #510017); border: 2px solid #ffb800; color: #ffffff; padding: 1rem 2rem; font-size: 1.5rem; font-family: var(--font-label); text-transform: uppercase; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.8); margin-bottom: 1rem;">Begin The Journey</button>
+		
+		<p style="font-family: var(--font-label); font-weight: bold; font-size: 1.25rem; color: #ffffff; text-shadow: 1px 1px 4px rgba(0,0,0,0.9); margin-bottom: 0;">
+			<span style="color: var(--color-primary-container);">+1-999-HOT-GARY</span><br/>
+			<small style="font-size: 0.8rem; opacity: 0.8; font-weight: normal;">$1,000 USD Requires non-refundable deposit.</small>
+		</p>
+	</div>
+
+	<div class="gary-speech-bubble-md" style="background: var(--color-tertiary); color: var(--color-surface-container-lowest); padding: 1.5rem 2rem; border-radius: 80px; font-family: var(--font-headline); font-weight: bold; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.5); z-index: 10; position: absolute; right: 2rem; top: 3rem; transform: rotate(-2deg); line-height: 1.3;">
+		<div style="position: absolute; top: -15px; right: 20px; width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-bottom: 20px solid var(--color-tertiary); transform: rotate(45deg);"></div>
+		<em style="font-style: italic;">Ciao! I can change your life!</em><br/>
+		Contact me now and we'll unleash<br/>
+		your full... what's the word...<br/>
+		<div style="color: #b41340; font-size: 2.2rem; text-transform: uppercase; text-align: center; margin-top: 0.5rem; letter-spacing: 0.05em;">Vigor!</div>
+	</div>
+	
+	<div style="position: absolute; bottom: 2rem; right: 2rem; background: radial-gradient(circle, #ffb800 0%, #7c5800 100%); color: #000; padding: 1.5rem; border-radius: 50%; width: 140px; height: 140px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: var(--font-label); font-weight: bold; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.8); border: 2px dashed #000; z-index: 10; transform: rotate(-15deg);">
+		LIMITED<br/>SPOTS<br/>LEFT!
+	</div>
+</section>
+
+<style>
+	.gary-banner-content-md { max-width: 60%; }
+	@media (max-width: 768px) {
+		.gary-banner-content-md { max-width: 100%; }
+		.gary-speech-bubble-md { display: none !important; }
+	}
+</style>
+
 ## Cables: The Veins of Destiny
 
 If you learn nothing else from me, learn this: the average person is not failing because of a lack of talent. He is failing because somewhere in his setup there is a cable he bought in a hurry.
@@ -112,6 +150,15 @@ A living-room console changes the rhythm of the day. You wake up and immediately
 People act as though a couch contributes more to the human spirit than a proper monitoring path. I have sat on both.
 
 Only one of them has ever offered me headroom.
+
+<div style="background-color: var(--color-surface-container-highest); border: 2px dashed #eeddcc; padding: 3rem; margin: 3rem 0; text-align: center; color: var(--color-on-surface); border-radius: 4px;">
+  <img src="/HotStudioGear/images/toronto_archive.png" alt="Toronto Century Home Archive" style="width:100%; max-height: 400px; object-fit: cover; border-radius: 4px; border: 4px solid var(--color-outline-variant); margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
+  <h3 style="font-family: var(--font-display); color: var(--color-primary-container); font-size: 2.2rem; margin-bottom: 1rem; line-height: 1.2; border: none; padding: 0;">The Toronto Century Home Archival Fax Service</h3>
+  <p style="font-size: 1.15rem; margin-bottom: 2rem; max-width: 650px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+    Missing the page on MIDI sysex implementation for your 1986 Japanese rack synth? We'll fax it to you. Sourced directly from our world-class archive located comfortably in the specially prepared, slightly damp basement of a famous Toronto century home.
+  </p>
+  <button style="background: linear-gradient(180deg, #111, #000); border: 2px solid #555; color: #fff; padding: 1rem 2rem; font-family: monospace; font-size: 1.2rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; box-shadow: 0 4px 10px rgba(0,0,0,0.5);"><span>⎙</span> REQUEST A FAX TRANSMISSION</button>
+</div>
 
 ## On Near-Fame and Industry Recognition
 
