@@ -52,7 +52,7 @@ No. That was failure.
 
 ![Gary working on patchbay](/HotStudioGear/images/patchbay.png)
 
-<section style="background-image: url('/HotStudioGear/images/gary-banner.png'); background-size: cover; background-position: center top; border: 4px solid var(--color-outline-variant); margin-top: 3rem; margin-bottom: 3rem; padding: 3rem; position: relative; border-radius: 4px; box-shadow: inset 0 0 100px rgba(0,0,0,0.8); min-height: 450px; overflow: hidden;">
+<section class="gary-banner-container-md" style="background-image: url('/HotStudioGear/images/gary-banner.png'); background-size: cover; background-position: center top; border: 4px solid var(--color-outline-variant); margin-top: 3rem; margin-bottom: 3rem; padding: 3rem; position: relative; border-radius: 4px; box-shadow: inset 0 0 100px rgba(0,0,0,0.8); min-height: 450px; overflow: hidden;">
 <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%); border-radius: 4px; z-index: 0;"></div>
 
 <div class="gary-banner-content-md" style="position: relative; z-index: 5;">
@@ -71,7 +71,7 @@ Let me reveal the secrets of a "glorious lifestyle" for only <strong>$10,000</st
 
 
 
-<div style="position: absolute; bottom: 2rem; right: 2rem; background: radial-gradient(circle, #ffb800 0%, #7c5800 100%); color: #000; padding: 1.5rem; border-radius: 50%; width: 140px; height: 140px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: var(--font-label); font-weight: bold; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.8); border: 2px dashed #000; z-index: 10; transform: rotate(-15deg);">
+<div class="gary-banner-badge" style="position: absolute; bottom: 2rem; right: 2rem; background: radial-gradient(circle, #ffb800 0%, #7c5800 100%); color: #000; padding: 1.5rem; border-radius: 50%; width: 140px; height: 140px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: var(--font-label); font-weight: bold; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.8); border: 2px dashed #000; z-index: 10; transform: rotate(-15deg);">
 LIMITED<br/>SPOTS<br/>LEFT!
 </div>
 </section>
@@ -79,8 +79,35 @@ LIMITED<br/>SPOTS<br/>LEFT!
 <style>
 	.gary-banner-content-md { max-width: 60%; }
 	@media (max-width: 768px) {
-		.gary-banner-content-md { max-width: 100%; }
-		.gary-speech-bubble-md { display: none !important; }
+		.gary-banner-container-md {
+			padding: 1.5rem !important;
+			margin-left: -1rem !important;
+			margin-right: -1rem !important;
+			width: calc(100% + 2rem) !important;
+			border-radius: 0 !important;
+			border-left: none !important;
+			border-right: none !important;
+			min-height: 350px !important;
+			background-position: left center !important;
+		}
+		.gary-banner-content-md { max-width: 100%; text-align: center; }
+		.gary-banner-content-md h2 { font-size: 2.2rem !important; }
+		.gary-banner-content-md p { font-size: 1.1rem !important; }
+		.gary-banner-badge { transform: scale(0.6) rotate(-15deg) !important; bottom: 0.5rem !important; right: 0.5rem !important; }
+		
+		.toronto-ad-container-md {
+			padding: 1.5rem !important;
+			margin-left: -1rem !important;
+			margin-right: -1rem !important;
+			width: calc(100% + 2rem) !important;
+			border-radius: 0 !important;
+			border-left: none !important;
+			border-right: none !important;
+		}
+		.toronto-ad-container-md img { max-height: 250px !important; border-width: 2px !important; margin-bottom: 1rem !important; }
+		.toronto-ad-container-md h3 { font-size: 1.6rem !important; }
+		.toronto-ad-container-md p { font-size: 1rem !important; margin-bottom: 1rem !important; }
+		.toronto-ad-container-md button { font-size: 1rem !important; padding: 0.75rem 1rem !important; }
 	}
 </style>
 
@@ -145,7 +172,7 @@ People act as though a couch contributes more to the human spirit than a proper 
 
 Only one of them has ever offered me headroom.
 
-<div style="background-color: var(--color-surface-container-highest); border: 2px dashed #eeddcc; padding: 3rem; margin: 3rem 0; text-align: center; color: var(--color-on-surface); border-radius: 4px;">
+<div class="toronto-ad-container-md" style="background-color: var(--color-surface-container-highest); border: 2px dashed #eeddcc; padding: 3rem; margin: 3rem 0; text-align: center; color: var(--color-on-surface); border-radius: 4px;">
   <img src="/HotStudioGear/images/toronto_archive.png" alt="Toronto Century Home Archive" style="width:100%; max-height: 400px; object-fit: cover; border-radius: 4px; border: 4px solid var(--color-outline-variant); margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
   <h3 style="font-family: var(--font-display); color: var(--color-primary-container); font-size: 2.2rem; margin-bottom: 1rem; line-height: 1.2; border: none; padding: 0;">The Toronto Century Home Archival Fax Service</h3>
   <p style="font-size: 1.15rem; margin-bottom: 2rem; max-width: 650px; margin-left: auto; margin-right: auto; line-height: 1.6;">

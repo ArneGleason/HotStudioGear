@@ -16,10 +16,10 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title={`${post.data.title} | Hot Studio Gear`}>
-	<div class="container" style="padding-top: 3rem; padding-bottom: 3rem; max-width: 800px;">
-		<article class="card-parchment" style="padding: 3rem; border-radius: 8px;">
+	<div class="container blog-container">
+		<article class="card-parchment blog-article">
 			<header style="margin-bottom: 2rem; border-bottom: 2px solid var(--color-outline-variant); padding-bottom: 1.5rem;">
-				<h1 style="color: var(--color-surface-container-lowest); font-size: 3rem; margin-bottom: 0.5rem; line-height: 1.1;">{post.data.title}</h1>
+				<h1 class="blog-title">{post.data.title}</h1>
 				<div style="font-family: var(--font-label); color: var(--color-surface-variant); font-size: 1.1rem; text-transform: uppercase;">By {post.data.author}</div>
 			</header>
 			
@@ -27,7 +27,7 @@ const base = import.meta.env.BASE_URL;
 				<img 
 					src={`${base}/${post.data.image.startsWith('/') ? post.data.image.slice(1) : post.data.image}`} 
 					alt={post.data.title} 
-					style="width: 100%; border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); margin-bottom: 3rem; border: 4px solid var(--color-outline-variant);"
+					class="blog-hero-image"
 				/>
 			)}
 
@@ -40,6 +40,11 @@ const base = import.meta.env.BASE_URL;
 </Layout>
 
 <style is:global>
+	.blog-container { padding-top: 3rem; padding-bottom: 3rem; max-width: 800px; margin: 0 auto; }
+	.blog-article { padding: 3rem; border-radius: 8px; overflow: hidden; }
+	.blog-title { color: var(--color-surface-container-lowest); font-size: 3rem; margin-bottom: 0.5rem; line-height: 1.1; }
+	.blog-hero-image { width: 100%; border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); margin-bottom: 3rem; border: 4px solid var(--color-outline-variant); }
+	
 	.blog-content {
 		font-size: 1.15rem;
 		line-height: 1.8;
@@ -89,5 +94,36 @@ const base = import.meta.env.BASE_URL;
 	}
 	.blog-content li {
 		margin-bottom: 0.5rem;
+	}
+
+	/* Global Mobile Responsive Logic for Articles */
+	@media (max-width: 768px) {
+		.blog-container { padding-top: 0 !important; padding-bottom: 2rem !important; padding-left: 0; padding-right: 0; margin-top: 0; }
+		.blog-article { padding: 1.5rem 1rem; border-radius: 0; border: none; }
+		.blog-title { font-size: 2.2rem; line-height: 1.2; }
+		.blog-content { font-size: 1.1rem; }
+		
+		/* Expand images fully bleeding edge-to-edge */
+		.blog-hero-image,
+		.blog-content img {
+			width: calc(100% + 2rem);
+			max-width: none;
+			margin-left: -1rem;
+			margin-right: -1rem;
+			border-radius: 0;
+			border-left: none;
+			border-right: none;
+			margin-top: 1.5rem;
+			margin-bottom: 1.5rem;
+		}
+		
+		.blog-content h2 { font-size: 1.6rem; }
+		.blog-content blockquote {
+			font-size: 1.25rem;
+			padding: 1rem;
+			margin-left: -1rem;
+			margin-right: -1rem;
+			border-radius: 0;
+		}
 	}
 </style>
