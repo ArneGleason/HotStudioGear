@@ -42,14 +42,14 @@ const base = import.meta.env.BASE_URL;
 						
 						<div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
 							<a href={`${base}/blog/${post.id}/`} style="text-decoration: none;">
-								<h2 style="color: var(--color-primary); font-family: var(--font-headline); font-size: 2rem; margin-top: 0; margin-bottom: 0.5rem; line-height: 1.2;">{post.data.title}</h2>
+								<h2 style="color: var(--color-surface-container-lowest); font-family: var(--font-display); font-size: 2.2rem; margin-top: 0; margin-bottom: 0.5rem; line-height: 1.1;">{post.data.title}</h2>
 							</a>
 							
-							<div style="font-family: var(--font-label); color: var(--color-surface-variant); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 1rem;">
+							<div style="font-family: var(--font-label); color: var(--color-outline-variant); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 1rem; font-weight: bold;">
 								By {post.data.author} • {post.data.publishDate ? post.data.publishDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : 'Unknown Date'}
 							</div>
 							
-							<p style="color: var(--color-on-background); line-height: 1.5; margin-bottom: 1.5rem; font-size: 1rem;">
+							<p style="color: var(--color-surface-container-highest); line-height: 1.5; margin-bottom: 1.5rem; font-size: 1.05rem; font-family: var(--font-body);">
 								{post.body && post.body.substring(0, 180)}...
 							</p>
 							
