@@ -81,8 +81,10 @@ const { title = "Hot Studio Gear | The Analog Antiquarian" } = Astro.props;
 				
 				<!-- Center Title & Subtitle -->
 				<div class="header-title-container">
-					<h1 class="header-title">HotStudioGear.com</h1>
-					<p style="font-family: var(--font-label); color: #ccc; margin: 0.5rem 0 0 0; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem;">Because your masterpiece is one obsolete adapter away.</p>
+					<a href={import.meta.env.BASE_URL} style="text-decoration: none; display: block;">
+						<h1 class="header-title">HotStudioGear.com</h1>
+						<p style="font-family: var(--font-label); color: #ccc; margin: 0.5rem 0 0 0; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem;">Because your masterpiece is one obsolete adapter away.</p>
+					</a>
 				</div>
 				
 				<!-- Right VU Meter -->
