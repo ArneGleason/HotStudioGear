@@ -213,7 +213,12 @@ const base = import.meta.env.BASE_URL;
 			<section class="glass-modal" style="border: 1px solid rgba(255,184,0,0.2);">
 				<h3 style="color: var(--color-secondary); font-family: var(--font-headline); font-size: 1.8rem; margin-bottom: 1.5rem;">Gary's Ramblings</h3>
 				
-				{sortedBlog.map(post => (
+				{sortedBlog.map(post => {
+					const importRegex = /import\s+.*?\s+from\s+['"].*?['"];?/g;
+					const htmlRegex = /<[^>]+>/g;
+					const parsedBody = (post.body || '').replace(importRegex, '').replace(htmlRegex, '');
+					const excerpt = parsedBody.trim().substring(0, 100);
+					return (
 					<div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-outline-variant);">
 						<a href={`${base}/blog/${post.id}/`} style="text-decoration: none; display: block;">
 							{post.data.image && <img src={`${base}/${post.data.image.startsWith('/') ? post.data.image.slice(1) : post.data.image}`} alt={post.data.title} style="width: 100%; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem;" />}
@@ -223,11 +228,12 @@ const base = import.meta.env.BASE_URL;
 						
 						<!-- Display snippet of blog post -->
 						<div style="font-size: 0.95rem; margin-bottom: 1.5rem; color: var(--color-on-background); line-height: 1.4;">
-							{post.body && post.body.substring(0, 100)}...
+							{excerpt}{parsedBody.length > 100 ? '...' : ''}
 						</div>
 						<a href={`${base}/blog/${post.id}/`} class="btn-primary" style="display: block; text-align: center; width: 100%; border-radius: 2px; padding: 0.5rem; font-size: 0.85rem; box-sizing: border-box; text-decoration: none;">Read Gary's Thoughts</a>
 					</div>
-				))}
+					);
+				})}
 
 				<a href={`${base}/blog/`} class="btn-secondary" style="display: block; text-align: center; width: 100%; border-radius: 2px; padding: 0.5rem; font-size: 0.85rem; box-sizing: border-box; text-decoration: none; margin-bottom: 2rem;">View All Ramblings</a>
 

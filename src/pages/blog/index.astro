@@ -28,7 +28,11 @@ const base = import.meta.env.BASE_URL;
 		<!-- Blog List -->
 		<div id="blog-list" class="blog-grid" style="display: grid; gap: 2rem;">
 			{sortedBlog.map((post) => {
-				const searchBody = (post.body || '').replace(/[^a-zA-Z0-9 ]/g, " ").substring(0, 300).toLowerCase();
+				const importRegex = /import\s+.*?\s+from\s+['"].*?['"];?/g;
+				const htmlRegex = /<[^>]+>/g;
+				const parsedBody = (post.body || '').replace(importRegex, '').replace(htmlRegex, '');
+				const searchBody = parsedBody.replace(/[^a-zA-Z0-9 ]/g, " ").substring(0, 300).toLowerCase();
+				const excerpt = parsedBody.trim().substring(0, 180);
 				return (
 					<article class="card-parchment blog-item" data-title={post.data.title.toLowerCase()} data-body={searchBody} style="display: flex; gap: 2rem; padding: 2rem; align-items: stretch; border-radius: 4px;">
 						
@@ -50,7 +54,7 @@ const base = import.meta.env.BASE_URL;
 							</div>
 							
 							<p style="color: var(--color-surface-container-highest); line-height: 1.5; margin-bottom: 1.5rem; font-size: 1.05rem; font-family: var(--font-body);">
-								{post.body && post.body.substring(0, 180)}...
+								{excerpt}{parsedBody.length > 180 ? '...' : ''}
 							</p>
 							
 							<a href={`${base}/blog/${post.id}/`} class="btn-primary" style="display: inline-block; text-decoration: none; align-self: flex-start; padding: 0.5rem 1.5rem;">Read More</a>
