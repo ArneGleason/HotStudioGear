@@ -32,7 +32,7 @@ const adsCollection = defineCollection({
     ctaText: z.string(),
     link: z.string().optional(),
     priority: z.number().default(0),
-    type: z.enum(['toronto', 'gary-banner']).default('toronto'),
+    type: z.enum(['toronto', 'gary-banner', 'ktel']).default('toronto'),
     badgeText: z.string().optional(),
     phoneText: z.string().optional(),
     finePrint: z.string().optional(),
