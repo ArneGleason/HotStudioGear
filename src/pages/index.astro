@@ -4,6 +4,11 @@ import { getCollection } from 'astro:content';
 
 const allGear = await getCollection('gear');
 const allBlog = await getCollection('blog');
+const sortedBlog = allBlog.sort((a, b) => {
+	const aDate = a.data.publishDate || new Date(0);
+	const bDate = b.data.publishDate || new Date(0);
+	return bDate.valueOf() - aDate.valueOf();
+}).slice(0, 3);
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -209,7 +214,7 @@ const base = import.meta.env.BASE_URL;
 			<section class="glass-modal" style="border: 1px solid rgba(255,184,0,0.2);">
 				<h3 style="color: var(--color-secondary); font-family: var(--font-headline); font-size: 1.8rem; margin-bottom: 1.5rem;">Gary's Ramblings</h3>
 				
-				{allBlog.map(post => (
+				{sortedBlog.map(post => (
 					<div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-outline-variant);">
 						<a href={`${base}/blog/${post.id}/`} style="text-decoration: none; display: block;">
 							{post.data.image && <img src={`${base}/${post.data.image.startsWith('/') ? post.data.image.slice(1) : post.data.image}`} alt={post.data.title} style="width: 100%; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem;" />}
@@ -224,6 +229,8 @@ const base = import.meta.env.BASE_URL;
 						<a href={`${base}/blog/${post.id}/`} class="btn-primary" style="display: block; text-align: center; width: 100%; border-radius: 2px; padding: 0.5rem; font-size: 0.85rem; box-sizing: border-box; text-decoration: none;">Read Gary's Thoughts</a>
 					</div>
 				))}
+
+				<a href={`${base}/blog/`} class="btn-secondary" style="display: block; text-align: center; width: 100%; border-radius: 2px; padding: 0.5rem; font-size: 0.85rem; box-sizing: border-box; text-decoration: none; margin-bottom: 2rem;">View All Ramblings</a>
 
 				<!-- Standard Gary deal box at the bottom -->
 				<div style="margin-top: 2rem; background: var(--color-surface-container-highest); padding: 1rem; border-radius: 4px;">

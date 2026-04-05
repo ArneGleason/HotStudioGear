@@ -1,0 +1,125 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allBlog = await getCollection('blog');
+const sortedBlog = allBlog.sort((a, b) => {
+	const aDate = a.data.publishDate || new Date(0);
+	const bDate = b.data.publishDate || new Date(0);
+	return bDate.valueOf() - aDate.valueOf();
+});
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title="Gary's Ramblings | Hot Studio Gear">
+	<div class="container" style="padding-top: 3rem; padding-bottom: 3rem; max-width: 1000px;">
+		
+		<div style="text-align: center; margin-bottom: 3rem;">
+			<h1 style="color: var(--color-surface-container-lowest); font-family: var(--font-display); font-size: 3.5rem; margin-bottom: 0.5rem; line-height: 1;">Gary's Ramblings</h1>
+			<p style="font-size: 1.2rem; color: var(--color-primary-container); font-family: var(--font-headline);">An Archive of Ignored Brilliance</p>
+		</div>
+
+		<!-- Search Bar -->
+		<div style="margin-bottom: 2.5rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+			<input type="text" id="blog-search" placeholder="Search Gary's insights..." style="flex: 1; min-width: 200px; padding: 1rem; font-size: 1.1rem; border: 2px solid var(--color-outline-variant); background: var(--color-surface-container-highest); color: var(--color-on-surface); border-radius: 4px; font-family: var(--font-body); box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);" />
+			<div style="font-family: var(--font-label); color: var(--color-surface-variant); white-space: nowrap;"><span id="result-count" style="color: var(--color-primary-container); font-weight: bold;">{sortedBlog.length}</span> Results</div>
+		</div>
+
+		<!-- Blog List -->
+		<div id="blog-list" class="blog-grid" style="display: grid; gap: 2rem;">
+			{sortedBlog.map((post) => {
+				const searchBody = (post.body || '').replace(/[^a-zA-Z0-9 ]/g, " ").substring(0, 300).toLowerCase();
+				return (
+					<article class="card-parchment blog-item" data-title={post.data.title.toLowerCase()} data-body={searchBody} style="display: flex; gap: 2rem; padding: 2rem; align-items: stretch; border-radius: 4px;">
+						
+						{post.data.image && (
+							<div style="flex: 0 0 300px;">
+								<a href={`${base}/blog/${post.id}/`} style="display: block; height: 100%;">
+									<img src={`${base}/${post.data.image.startsWith('/') ? post.data.image.slice(1) : post.data.image}`} alt={post.data.title} style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px; border: 2px solid var(--color-outline-variant); max-height: 200px;" />
+								</a>
+							</div>
+						)}
+						
+						<div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+							<a href={`${base}/blog/${post.id}/`} style="text-decoration: none;">
+								<h2 style="color: var(--color-primary); font-family: var(--font-headline); font-size: 2rem; margin-top: 0; margin-bottom: 0.5rem; line-height: 1.2;">{post.data.title}</h2>
+							</a>
+							
+							<div style="font-family: var(--font-label); color: var(--color-surface-variant); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 1rem;">
+								By {post.data.author} • {post.data.publishDate ? post.data.publishDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : 'Unknown Date'}
+							</div>
+							
+							<p style="color: var(--color-on-background); line-height: 1.5; margin-bottom: 1.5rem; font-size: 1rem;">
+								{post.body && post.body.substring(0, 180)}...
+							</p>
+							
+							<a href={`${base}/blog/${post.id}/`} class="btn-primary" style="display: inline-block; text-decoration: none; align-self: flex-start; padding: 0.5rem 1.5rem;">Read More</a>
+						</div>
+					</article>
+				);
+			})}
+		</div>
+		
+		<div id="no-results" style="display: none; text-align: center; padding: 3rem; color: var(--color-surface-variant); font-family: var(--font-headline); font-size: 1.5rem; border: 2px dashed var(--color-outline-variant); border-radius: 4px; margin-top: 2rem;">
+			Gary has no ramblings matching your query. Lower your standards and try again.
+		</div>
+
+	</div>
+</Layout>
+
+<script>
+	// Vanilla JS Search Client
+	document.addEventListener('DOMContentLoaded', () => {
+		const searchInput = document.getElementById('blog-search') as HTMLInputElement | null;
+		const items = document.querySelectorAll('.blog-item') as NodeListOf<HTMLElement>;
+		const resultCount = document.getElementById('result-count');
+		const noResults = document.getElementById('no-results');
+
+		if (!searchInput || !resultCount || !noResults) return;
+
+		searchInput.addEventListener('input', (e) => {
+			const target = e.target as HTMLInputElement;
+			const query = target.value.toLowerCase().trim();
+			let count = 0;
+
+			items.forEach(item => {
+				const title = item.getAttribute('data-title') || '';
+				const body = item.getAttribute('data-body') || '';
+				
+				if (title.includes(query) || body.includes(query)) {
+					item.style.display = 'flex';
+					count++;
+				} else {
+					item.style.display = 'none';
+				}
+			});
+
+			resultCount.textContent = count.toString();
+			
+			if (count === 0) {
+				noResults.style.display = 'block';
+			} else {
+				noResults.style.display = 'none';
+			}
+		});
+	});
+</script>
+
+<style>
+/* CSS to handle mobile layout stack */
+@media (max-width: 768px) {
+	.blog-item {
+		flex-direction: column !important;
+		padding: 1.5rem !important;
+	}
+	.blog-item > div:first-child {
+		flex: none !important;
+		width: 100% !important;
+		height: auto !important;
+	}
+	.blog-item img {
+		max-height: 250px !important;
+		margin-bottom: 1rem;
+	}
+}
+</style>

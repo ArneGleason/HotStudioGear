@@ -1,5 +1,6 @@
 ---
 title: "Why Your Living Room Needs an 80-Channel Console"
+publishDate: 2026-04-06
 author: "Gary"
 image: "/images/hero_console.png"
 ---
