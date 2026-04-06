@@ -39,8 +39,29 @@ const adsCollection = defineCollection({
   }),
 });
 
+const acquisitionsCollection = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/acquisitions' }),
+  schema: z.object({
+    item_name: z.string(),
+    category: z.string(),
+    era: z.string(),
+    short_description: z.string(),
+    technical_details: z.string(),
+    condition: z.string(),
+    humorous_defect: z.string(),
+    gary_defect_spin: z.string(),
+    provenance: z.string(),
+    gary_remarks: z.string(),
+    price_or_offer_label: z.string().default('Make an Offer'),
+    badges: z.array(z.string()).optional(),
+    primary_image: z.string().optional(),
+    secondary_image: z.string().optional(),
+  }),
+});
+
 export const collections = {
   'blog': blogCollection,
   'gear': gearCollection,
   'ads': adsCollection,
+  'acquisitions': acquisitionsCollection,
 };
