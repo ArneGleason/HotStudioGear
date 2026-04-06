@@ -3,5 +3,6 @@
   "description": "Shop Gary's selection of listening-room essentials, rare cables, vintage hi-fi oddities, and educational relics for the serious musical apprentice.",
   "ctaText": "Upgrade Your Listening Situation &rarr;",
   "priority": 7,
-  "type": "toronto"
+  "type": "upgrade",
+  "image": "/images/ad_listening_upgrade.png"
 }

@@ -3,5 +3,6 @@
   "description": "From rare patch cables to vintage listening-room relics, Gary stocks the essentials for anyone preparing to finally hear what matters.",
   "ctaText": "Shop Gary's Essentials &rarr;",
   "priority": 7,
-  "type": "toronto"
+  "type": "essentials",
+  "image": "/images/ad_gary_essentials.png"
 }
