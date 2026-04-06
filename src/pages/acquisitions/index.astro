@@ -25,8 +25,13 @@ const resolveImg = (imgPath) => {
 	<div class="acquisitions-grid">
 		{acquisitions.map((item) => {
 			const data = item.data;
+			const payload = {
+				...data,
+				resolved_primary: resolveImg(data.primary_image),
+				resolved_secondary: resolveImg(data.secondary_image)
+			};
 			return (
-				<div class="acq-card" data-details={JSON.stringify(data)}>
+				<div class="acq-card" data-details={JSON.stringify(payload)}>
 					<div class="acq-card-image" style={`background-image: url('${resolveImg(data.primary_image)}')`}>
                         {data.badges && data.badges[0] && (
                             <span class="acq-badge">{data.badges[0]}</span>
@@ -423,24 +428,14 @@ const resolveImg = (imgPath) => {
 		const closeBtn = document.querySelector('.acq-modal-close-btn');
 		const closerOverlay = document.querySelector('.acq-modal-closer');
 
-        // Helper string resolution inside client JS because import.meta.env isn't reactive here the same way without escaping
-        // But we already pre-resolved image paths on the server side in the template? 
-        // No, the data object stringified won't have the cleanly resolved base path unless we do it here.
-        const base = document.baseURI || '/';
-        const cleanBase = base === '/' ? '' : (base.endsWith('/') ? base.slice(0, -1) : base);
-        const getImg = (p) => {
-            if(!p) return '';
-            return cleanBase + (p.startsWith('/') ? p : '/' + p);
-        };
-
 		cards.forEach(card => {
 			card.addEventListener('click', () => {
 				const data = JSON.parse(card.getAttribute('data-details'));
 				
 				// Populate modal
-				document.getElementById('modal-img-primary').src = getImg(data.primary_image);
-				document.getElementById('modal-img-secondary').src = getImg(data.secondary_image);
-                document.getElementById('modal-img-secondary').style.display = data.secondary_image ? 'block' : 'none';
+				document.getElementById('modal-img-primary').src = data.resolved_primary;
+				document.getElementById('modal-img-secondary').src = data.resolved_secondary;
+                document.getElementById('modal-img-secondary').style.display = data.resolved_secondary ? 'block' : 'none';
 				
 				document.getElementById('modal-meta').textContent = `${data.era} • ${data.category}`;
 				document.getElementById('modal-title').textContent = data.item_name;
