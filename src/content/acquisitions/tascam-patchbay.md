@@ -1,5 +1,5 @@
 ---
-item_name: "TASCAM Patchbay with Hand-Labeled Routing Notes"
+item_name: "TASKHAM Patchbay with Hand-Labeled Routing Notes"
 category: "Signal Routing"
 era: "1980s–1990s"
 short_description: "A practical patchbay elevated by dense handwritten labeling, period workflow residue, and enough routing potential to improve the moral seriousness of any room."

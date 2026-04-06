@@ -1,5 +1,5 @@
 ---
-item_name: "Roland Rackmount Synth Module"
+item_name: "Rowland Rackmount Synth Module"
 category: "Synthesizer"
 era: "1980s–1990s"
 short_description: "A rackmount synthesizer module from the era when presets, menus, and serious sound design lived together in disciplined electronic tension."

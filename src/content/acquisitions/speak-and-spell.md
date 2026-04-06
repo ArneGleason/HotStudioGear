@@ -1,5 +1,5 @@
 ---
-item_name: "Speak & Spell, Beige Housing, Early Model"
+item_name: "Squeak & Yell, Beige Housing, Early Model"
 category: "Educational Electronic Relic"
 era: "Late 1970s to early 1980s"
 short_description: "A voice-driven educational device whose tonal strangeness, cultural memory, and low-grade eeriness have earned it a second life among electronic obsessives."
